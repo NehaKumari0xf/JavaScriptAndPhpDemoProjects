@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students record</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!--for colours-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>    
+
+    <script>
+    var data='[{"srno":"01","name":"Anjali kumari","clas":"BCA","sec":"A","roll":34,"marks":405},{"srno":"02","name":"Anu priya","clas":"BCA","sec":"A","roll":35,"marks":400},{"srno":"03","name":"Aaditya raj","clas":"BCA","sec":"A","roll":36,"marks":378},{"srno":"04","name":"Aayush sahu","clas":"BCA","sec":"A","roll":37,"marks":376},{"srno":"05","name":"Abhishek kumar","clas":"BCA","sec":"A","roll":38,"marks":388},{"srno":"06","name":"Ankit kumar","clas":"BCA","sec":"A","roll":39,"marks":399},{"srno":"07","name":"Ankit raj","clas":"BCA","sec":"A","roll":40,"marks":400},{"srno":"08","name":"Adarsh singh","clas":"BCA","sec":"A","roll":41,"marks":411},{"srno":"09","name":"Aditya singh","clas":"BCA","sec":"A","roll":42,"marks":422},{"srno":"10","name":"Adnan sekh","clas":"BCA","sec":"A","roll":43,"marks":333},{"srno":"11","name":"Aishwarya raj","clas":"BCA","sec":"A","roll":44,"marks":344},{"srno":"12","name":"Bishakha kumari","clas":"BCA","sec":"A","roll":45,"marks":345},{"srno":"13","name":"Chanchala kumai","clas":"BCA","sec":"A","roll":46,"marks":346},{"srno":"14","name":"Divya singh","clas":"BCA","sec":"A","roll":46,"marks":346},{"srno":"15","name":"Divyanshi raj","clas":"BCA","sec":"A","roll":47,"marks":432},{"srno":"16","name":"Deepak kumar","clas":"BCA","sec":"A","roll":48,"marks":384},{"srno":"17","name":"Fatima sekh","clas":"BCA","sec":"A","roll":49,"marks":394},{"srno":"18","name":"Firozh khan","clas":"BCA","sec":"A","roll":50,"marks":350},{"srno":"19","name":"Gini singh","clas":"BCA","sec":"A","roll":51,"marks":355},{"srno":"20","name":"Gautam yadav","clas":"BCA","sec":"A","roll":52,"marks":354},{"srno":"21","name":"Hina khan","clas":"BCA","sec":"A","roll":53,"marks":435},{"srno":"22","name":"Hritik raj","clas":"BCA","sec":"A","roll":54,"marks":355},{"srno":"23","name":"Isha gupta","clas":"BCA","sec":"A","roll":55,"marks":310},{"srno":"24","name":"komal kumari","clas":"BCA","sec":"A","roll":56,"marks":356},{"srno":"25","name":"Varsha","clas":"BCA","sec":"A","roll":57,"marks":357}]';
+        function showData()
+        {
+            try{
+                //parse JASON data to js object
+                var jsobj=JSON.parse(data);
+                var tbody=document.getElementById("stbody");
+                for(var i=0;i<jsobj.length;i++)
+                {
+                    let row=document.createElement("tr");
+                    let td1=document.createElement("td");
+                    let td2=document.createElement("td");
+                    let td3=document.createElement("td");
+                    let td4=document.createElement("td");
+                    let td5=document.createElement("td");
+                    let td6=document.createElement("td");
+
+                    let tn1=document.createTextNode(i+1);
+                    let tn2=document.createTextNode(jsobj[i].name);
+                    let tn3=document.createTextNode(jsobj[i].clas);
+                    let tn4=document.createTextNode(jsobj[i].sec);
+                    let tn5=document.createTextNode(jsobj[i].roll);
+                    let tn6=document.createTextNode(jsobj[i].marks);
+
+                    td1.appendChild(tn1);
+                    td2.appendChild(tn2);
+                    td3.appendChild(tn3);
+                    td4.appendChild(tn4);
+                    td5.appendChild(tn5);
+                    td6.appendChild(tn6);
+
+                    row.appendChild(td1);
+                    row.appendChild(td2);
+                    row.appendChild(td3);
+                    row.appendChild(td4);
+                    row.appendChild(td5);
+                    row.appendChild(td6);
+
+                    tbody.appendChild(row);
+                }
+            }catch(ex){
+                alert("Exception");
+            }
+        }
+    </script>
+</head>
+<body onload="showData();">
+    <h1 class="text-info text-center py-3"><u><b>STUDENT RECORDS</b></u></h1>
+    <table class="table table-bordered table-hover">
+        <thead class="bg-info text-light ">
+            <tr class="text-center "><th>Sr. no</th><th>Name</th><th>Class</th><th>Section</th><th>Roll_no.</th><th>Total marks of five subjects</th></tr>
+        </thead>
+        <tbody id="stbody"  class="text-center table-sm">
+
+        </tbody>
+    </table>
+</body>
+</html>
