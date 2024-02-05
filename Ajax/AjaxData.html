@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax Example</title>
+    
+    <script>
+        function showData1()
+        {
+            var obj=new XMLHttpRequest();
+            obj.onreadystatechange=function()
+            {
+                var dTable=document.getElementById("data");
+                dTable.innerHTML="";
+                if(this.readyState==4 && this.status==200)
+                {
+                 try{
+                    var data=JSON.parse(this.responseText);
+                    data.forEach(function(d){
+                        let row=document.createElement("tr");
+                        for(var key in d)
+                        {
+                            let col=document.createElement("td");
+                            let t=document.createTextNode(d[key]);
+                            col.appendChild(t)
+                            row.appendChild(col);
+                        }                        
+                        dTable.appendChild(row);                        
+                    });
+
+                 }catch(exception){
+                    alert(exception.message);
+                 }
+
+                }
+            };
+            obj.open("GET","https://rajkumarraj89.github.io/data/data.json",true);
+            obj.send();
+
+        }
+
+        function showData2()
+        {
+            var obj=new XMLHttpRequest();
+
+            obj.onreadystatechange=function()
+            {
+                var dTable=document.getElementById("data");
+                dTable.innerHTML="";
+                if(this.readyState==4 && this.status==200)
+                {
+                 try{
+                    var data=JSON.parse(this.responseText);
+                    data.forEach(function(d){
+                        let row=document.createElement("tr");
+                        for(var key in d)
+                        {
+                            let col=document.createElement("td");
+                            let t=document.createTextNode(d[key]);
+                            col.appendChild(t)
+                            row.appendChild(col);
+                        }                        
+                        dTable.appendChild(row);                        
+                    });
+
+                 }catch(exception){
+                    alert(exception.message);
+                 }
+
+                }
+            };
+            obj.open("GET","https://okneha.github.io/Ajax/Students_data1.json",true);
+
+            obj.send();
+
+        }
+    </script>
+</head>
+<body >
+    <h1>AJAX Example</h1>
+    <button onclick="showData1();">Data 1</button>
+    <button onclick="showData2();">Data 2</button>
+    <table id="data" style="width:100%;border:solid;">
+        <tbody id="data">
+
+        </tbody>
+    </table>
+    
+</body>
+</html>
+
