@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var sl1=["Aaryan Raj","Ritik Raj","Rakesh Raj","Rahul Raj","Anil Kumar"];
+        var sl2=["Anshu Mala","Neha Kumari","Kajal Kumari","Sheetal Sinha","Sweety Raj","Priyanka Kumari"];
+        
+        
+        function addStudentToList()
+        {
+            var s1=document.getElementById("s1");
+            
+            for(let i=0;i<sl1.length;i++)
+            {
+                
+                //create a li element and append it to s1 
+                let li=document.createElement("li");
+                let tn=document.createTextNode(sl1[i]);                
+                li.appendChild(tn);
+                s1.appendChild(li);
+               
+            }
+            sl2.forEach(addItemToList);
+        }
+
+        function addItemToList(data)
+        {
+            var s2=document.getElementById("s2");
+            let li=document.createElement("li");
+            let tn=document.createTextNode(data);
+            li.appendChild(tn);
+            s2.appendChild(li);            
+        }
+    </script>
+</head>
+<body onload="addStudentToList();">
+    <h1>Students Name</h1>
+    <ol id="s1">
+
+    </ol>
+    <h1>New Student Name</h1>
+    <ol id="s2">
+
+    </ol>
+</body>
+</html>
